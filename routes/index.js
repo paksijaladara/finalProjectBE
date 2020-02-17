@@ -1,9 +1,9 @@
 const HomeRouter = require("./HomeRouters");
-const authRouter = require("./authRouter");
+const ManageRouter = require("./ManageRouter");
 const LoginRegisterRouter = require("./LoginRegisterRouter");
 
 module.exports = {
   HomeRouter,
-  authRouter,
+  ManageRouter,
   LoginRegisterRouter
 };

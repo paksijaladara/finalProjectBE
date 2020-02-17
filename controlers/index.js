@@ -1,9 +1,9 @@
 const HomeControllers = require("./HomeControllers");
 const LoginRegister = require("./LoginRegisterControllers");
-const authController = require("./authController");
+const ManageController = require("./ManageController");
 
 module.exports = {
   HomeControllers,
   LoginRegister,
-  authController
+  ManageController
 };

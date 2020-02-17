@@ -24,12 +24,12 @@ var path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
 // setting routes
-const { HomeRouter, authRouter, LoginRegisterRouter } = require("./routes");
+const { HomeRouter, ManageRouter, LoginRegisterRouter } = require("./routes");
 
 app.get("/", (req, res) =>
   res.send("Sudah terhubung dengan Backend Fishstore")
 );
-app.use("/data_product", authRouter);
+app.use("/data_product", ManageRouter);
 app.use("/home_product", HomeRouter);
 app.use("/LoginRegister", LoginRegisterRouter);
 
