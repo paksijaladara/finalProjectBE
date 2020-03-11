@@ -24,7 +24,12 @@ var path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
 // setting routes
-const { HomeRouter, ManageRouter, LoginRegisterRouter } = require("./routes");
+const {
+  HomeRouter,
+  ManageRouter,
+  LoginRegisterRouter,
+  TransaksiRouter
+} = require("./routes");
 
 app.get("/", (req, res) =>
   res.send("Sudah terhubung dengan Backend Fishstore")
@@ -32,6 +37,7 @@ app.get("/", (req, res) =>
 app.use("/data_product", ManageRouter);
 app.use("/home_product", HomeRouter);
 app.use("/LoginRegister", LoginRegisterRouter);
+app.use("/transaksi", TransaksiRouter);
 
 // setting port
 const PORT = process.env.PORT || 2500;

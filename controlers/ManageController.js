@@ -16,6 +16,17 @@ module.exports = {
     });
   },
 
+  getProductDetail: (req, res) => {
+    console.log(req.params.id);
+    let sql = `SELECT dp.id,dp.nama,dp.harga,dp.deskripsiAwal,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId where dp.id=${req.params.id}`;
+    db.query(sql, (err, result) => {
+      if (err) res.status(500).send(err);
+      console.log(result);
+
+      res.status(200).send({ detailProduct: result[0] });
+    });
+  },
+
   postProduct: (req, res) => {
     console.log("masuk upload");
     try {
@@ -24,6 +35,7 @@ module.exports = {
 
       upload(req, res, err => {
         if (err) {
+          // taro unlinksync disini untuk gambarnya ga banyak
           return res
             .status(500)
             .json({ message: "upload gagal", error: err.message });
@@ -34,10 +46,9 @@ module.exports = {
         // console.log("ini req", req.files);
         const imagePath = image ? path + "/" + image[0].filename : null;
 
-        // console.log(req.body.data);
+        console.log(req.body.data);
         const data = JSON.parse(req.body.data);
         data.colomImage = imagePath; //tambhakan property image di object data dan image tersebut harus sesuai dengan coloms di tablenya
-        // data.password = cryptogenerate(data.password); //menambahkan /ubah properti yg namanya password di object data dan password tersebut harus sesuai dengan collums di tablenya dan password sudah di encrypt melalui cryptogenerate
 
         console.log("masuk post");
         var sql = "INSERT INTO data_product SET ?";
@@ -150,7 +161,6 @@ module.exports = {
           err: err.message
         });
       }
-      //   in juga data di ambil dari my sql
       console.log(result);
       sql = `SELECT dp.id,dp.nama,dp.harga,dp.deskripsiAwal,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
       db.query(sql, (err, result3) => {
