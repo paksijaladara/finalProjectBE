@@ -99,8 +99,8 @@ module.exports = {
         //   userid: result3[0].id,
         //   userName: result3[0].userName
         // });
-        console.log(result3[0]);
-        console.log("masuk kemari");
+        // console.log(result3[0]);
+        // console.log("masuk kemari");
         return res.send({
           result: result3[0],
           status: "login success"
