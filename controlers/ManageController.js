@@ -7,7 +7,7 @@ const { uploader } = require("../helper/uploader");
 module.exports = {
   // mulai get user, diambil dari data user
   getProduct: (req, res) => {
-    let sql = `SELECT dp.id,dp.nama,dp.harga,dp.deskripsiAwal,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
+    let sql = `SELECT dp.id,dp.nama,dp.harga,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
     db.query(sql, (err, result) => {
       if (err) res.status(500).send(err);
       // console.log(result);
@@ -18,7 +18,7 @@ module.exports = {
 
   getProductDetail: (req, res) => {
     console.log(req.params.id);
-    let sql = `SELECT dp.id,dp.nama,dp.harga,dp.deskripsiAwal,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId where dp.id=${req.params.id}`;
+    let sql = `SELECT dp.id,dp.nama,dp.harga,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId where dp.id=${req.params.id}`;
     db.query(sql, (err, result) => {
       if (err) res.status(500).send(err);
       console.log(result);
@@ -63,7 +63,7 @@ module.exports = {
           }
 
           //   in juga data di ambil dari my sql
-          sql = `SELECT dp.id,dp.nama,dp.harga,dp.deskripsiAwal,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
+          sql = `SELECT dp.id,dp.nama,dp.harga,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
           db.query(sql, (err, result4) => {
             if (err) res.status(500).send(err);
             res.status(200).send({ dataProduct: result4 });
@@ -130,7 +130,7 @@ module.exports = {
                 }
               }
               console.log("berhasil put");
-              sql = `SELECT dp.id,dp.nama,dp.harga,dp.deskripsiAwal,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
+              sql = `SELECT dp.id,dp.nama,dp.harga,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
               db.query(sql, (err, result1) => {
                 if (err) res.status(500).send(err);
                 res.status(200).send({ dataProduct: result1 });
@@ -162,7 +162,7 @@ module.exports = {
         });
       }
       console.log(result);
-      sql = `SELECT dp.id,dp.nama,dp.harga,dp.deskripsiAwal,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
+      sql = `SELECT dp.id,dp.nama,dp.harga,dp.stock,dp.deskripsiFull,dp.newArrival,dk.kategori,dp.colomImage FROM data_product dp JOIN data_kategori dk ON dk.id = dp.kategoriId`;
       db.query(sql, (err, result3) => {
         if (err) res.status(500).send(err);
         res.status(200).send({ dataProduct: result3 });
